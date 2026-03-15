@@ -36,65 +36,69 @@ const projects: Project[] = [
     award: 'Winner, HackCrux 2025, GDG LNMIIT'
   },
   {
-    title: 'AI-Powered Legal Document Analyzer',
-    date: 'Aug 2025',
-    shortDescription: 'Advanced RAG pipeline for legal document analysis using Gemini 1.5 Pro and Vertex AI.',
-    fullDescription: 'A comprehensive legal document analysis platform that leverages state-of-the-art AI models to extract, analyze, and summarize legal documents. The system uses a sophisticated RAG pipeline to provide accurate answers to legal queries based on uploaded documents.',
-    techStack: ['Angular', 'FastAPI', 'RAG Pipeline', 'Gemini 1.5 Pro', 'Vertex AI', 'ChromaDB'],
+    title: 'Smart Parking System',
+    date: 'Oct 2024',
+    shortDescription: 'IoT + AI automated parking system with license plate recognition, real-time slot tracking, and online booking.',
+    fullDescription: 'An IoT and AI-based smart parking system designed to solve urban parking challenges through end-to-end automation. A Raspberry Pi with camera handles license plate recognition at entry/exit gates, while NodeMCU manages IR sensors, LEDs, and servo motors for gate control. Users can view live slot availability, book a slot, and pay via a web app. The Flask server orchestrates real-time communication between all IoT devices and the database, while a React.js interface keeps users informed at every step.',
+    techStack: ['Python', 'Flask', 'React.js', 'OpenCV', 'EasyOCR', 'Raspberry Pi', 'NodeMCU', 'SQL'],
     features: [
-      'Multi-document upload and processing',
-      'Semantic search across legal documents',
-      'AI-powered legal clause extraction',
-      'Risk assessment and flagging',
-      'Export to multiple formats'
+      'License plate recognition at entry/exit using OpenCV + EasyOCR on Raspberry Pi for automated gate control',
+      'Real-time slot availability tracking via IR sensors, with LED indicators (green = free, red = occupied)',
+      'Online booking with QR-code-based payment (base charge ₹10) and database reservation',
+      'Dynamic fare calculation based on parking duration, processed at exit before gate release',
+      'Full-capacity handling: web app displays "No Slots Available" and restricts gate entry to prevent overloading',
+      'Flask server APIs bridging IoT hardware (Raspberry Pi, NodeMCU) with the SQL database and React frontend'
     ],
-    github: 'https://github.com/paras-goyal/legal-analyzer'
+    github: 'https://github.com/paras-goyal/smart-parking',
+    award: 'Best Paper Award, CCPIS IEEE Conference 2025 — Intelligent Systems & Applications (ISA) Track'
+  },
+  {
+    title: 'VulnAI: Vulnerability Scanning in AI Systems',
+    date: 'Jan 2025',
+    shortDescription: 'Security auditing tool to identify adversarial vulnerabilities in ML models and LLMs, with human-readable risk reports.',
+    fullDescription: 'A comprehensive security auditing platform designed to identify vulnerabilities in machine learning models and Large Language Models (LLMs). The pipeline provides a robust environment to test for adversarial attacks and security bypasses, generating detailed human-readable reports on model safety with actionable prevention guidance.',
+    techStack: ['Python', 'FastAPI', 'PyTorch', 'ART', 'Next.js', 'React', 'Tailwind CSS', 'Google OAuth 2.0'],
+    features: [
+      'ML model scanning: FGSM, PGD, C&W, and DeepFool adversarial attack simulations on PyTorch .pth models',
+      'LLM security testing: jailbreak scanning, prompt injection, and toxicity detection using hardcoded adversarial prompts',
+      'Collaborative human-readable vulnerability reports with severity breakdown and prevention strategies',
+      'Persistent audit history to track security progress across all previously scanned models',
+      'Google OAuth 2.0 authentication for secure, personalized dashboard access',
+      'Decoupled FastAPI backend and Next.js frontend for high-concurrency AI security computations'
+    ],
+    github: 'https://github.com/paras-2407/VulnAI-Vulnerability-Detection-in-AI-Models'
+  },
+  {
+    title: 'Demystify Legal Documents with Generative AI',
+    date: 'Aug 2025',
+    shortDescription: 'GCP-powered platform that simplifies complex legal documents via instant AI summarization and a grounded RAG Q&A chatbot.',
+    fullDescription: 'Legal documents are often a labyrinth of complex jargon, creating information asymmetry that leads to unforeseen financial and legal risks. This platform acts as a reliable first point of contact — uploading a PDF, DOCX, or TXT file triggers intelligent parsing via Vertex AI Document AI, while Gemini 1.5 Pro powers both instant summarization and a RAG-based Q&A system grounded in the document content and relevant constitutional laws. Chat history is persisted in Firestore, and the entire stack runs on GCP for scalability and security.',
+    techStack: ['Angular', 'FastAPI', 'Gemini 1.5 Pro', 'Vertex AI', 'LangChain', 'Firestore', 'Google Cloud Storage', 'Google OAuth'],
+    features: [
+      'Multi-format document ingestion (PDF, DOCX, TXT) with intelligent OCR and extraction via Vertex AI Document AI',
+      'Instant contextual summarization of complex legal texts powered by Gemini 1.5 Pro',
+      'RAG-based Q&A chat grounded in uploaded document content and relevant constitutional laws using LangChain + text-embedding-004',
+      'Semantic vector search via Vertex AI Vector Search (formerly Matching Engine) for accurate document retrieval',
+      'Persistent chat history stored in Firestore for continuity across sessions',
+      'Secure Google OAuth authentication with Cloud IAM for granular access control across all GCP services'
+    ],
+    github: 'https://github.com/varunpareek690/demystifyDocs'
   },
   {
     title: 'AI-Based Medical Prescription Validator',
     date: 'Feb – May 2025',
-    shortDescription: 'NLP-powered system for validating medical prescriptions using OCR and medical APIs.',
-    fullDescription: 'An intelligent system designed to digitize and validate medical prescriptions. Using OCR technology combined with NLP models, it extracts prescription information and cross-references it with medical databases to ensure accuracy and flag potential drug interactions.',
-    techStack: ['Python', 'Flan-T5-small', 'NLP', 'OCR', 'Medical APIs', 'Flask'],
+    shortDescription: 'End-to-end NLP pipeline that OCR-parses scanned prescriptions, validates medication safety via clinical APIs, and generates patient-friendly reports using fine-tuned Flan-T5.',
+    fullDescription: 'An end-to-end NLP-based system that analyzes scanned medical prescriptions using Tesseract OCR to extract structured data (medication name, strength, form, frequency), validates medication safety against trusted clinical datasets (RxNorm, openFDA, DailyMed), and generates fluent patient-friendly summaries using a fine-tuned Flan-T5-small transformer model. The system is served through a FastAPI backend and an interactive Streamlit frontend for uploading images or JSON data and visualizing results.',
+    techStack: ['Python', 'Flan-T5-small', 'Tesseract OCR', 'Streamlit', 'FastAPI', 'RxNorm', 'openFDA', 'DailyMed'],
     features: [
-      'Prescription OCR and digitization',
-      'Drug interaction checking',
-      'Dosage validation against guidelines',
-      'Patient history integration',
-      'Pharmacy notification system'
+      'OCR parsing with Tesseract (pytesseract) to extract structured fields — medication name, strength, form, and frequency — from scanned prescription images',
+      'Medication validation against RxNorm API, openFDA API, and DailyMed drug labels for dosage, form suitability, and indication checks',
+      'Patient-friendly report generation using a fine-tuned flan-t5-small HuggingFace transformer model',
+      'Interactive Streamlit frontend for uploading prescription images or JSON data and visualizing validation results',
+      'FastAPI backend for modular, high-performance integration between OCR, validation, and report generation layers'
     ],
-    github: 'https://github.com/paras-goyal/prescription-validator'
+    github: 'https://github.com/paras-2407/AI-based-Medical-Prescription-Validator'
   },
-  {
-    title: 'Real-Time Collaboration Platform',
-    date: 'Jan 2025',
-    shortDescription: 'WebSocket-based collaborative workspace with real-time document editing and video conferencing.',
-    fullDescription: 'A full-featured collaboration platform enabling teams to work together in real-time. Features include synchronized document editing, video conferencing, chat, and project management tools, all built on a scalable WebSocket architecture.',
-    techStack: ['React', 'Node.js', 'WebSockets', 'Redis', 'PostgreSQL', 'WebRTC'],
-    features: [
-      'Real-time document collaboration',
-      'Integrated video conferencing',
-      'Project management dashboard',
-      'File sharing and version control',
-      'Team chat and notifications'
-    ],
-    github: 'https://github.com/paras-goyal/collab-platform'
-  },
-  {
-    title: 'Distributed Task Scheduler',
-    date: 'Nov 2024',
-    shortDescription: 'Fault-tolerant distributed task scheduling system built with Go and Kafka.',
-    fullDescription: 'A highly available distributed task scheduling system designed for reliability and scalability. Built using Go for performance and Kafka for message queuing, it ensures tasks are executed reliably even in the face of node failures.',
-    techStack: ['Go', 'Kafka', 'Redis', 'PostgreSQL', 'Docker', 'Kubernetes'],
-    features: [
-      'Distributed task execution',
-      'Automatic failure recovery',
-      'Priority-based scheduling',
-      'Real-time monitoring dashboard',
-      'Horizontal scaling support'
-    ],
-    github: 'https://github.com/paras-goyal/task-scheduler'
-  }
 ]
 
 export function Projects() {
