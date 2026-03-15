@@ -86,14 +86,14 @@ export function About() {
                 className="glass-card p-4 rounded-xl"
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="text-3xl font-bold gradient-text mb-1">3+</div>
+                <div className="text-3xl font-bold gradient-text mb-1">5+</div>
                 <div className="text-sm text-muted-foreground">Major Projects</div>
               </motion.div>
               <motion.div 
                 className="glass-card p-4 rounded-xl"
                 whileHover={{ scale: 1.02 }}
               >
-                <div className="text-3xl font-bold gradient-text mb-1">2+</div>
+                <div className="text-3xl font-bold gradient-text mb-1">2</div>
                 <div className="text-sm text-muted-foreground">Internships</div>
               </motion.div>
               <motion.div 
