@@ -1,26 +1,38 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Trophy, Award, Star, FileText, ExternalLink } from 'lucide-react'
+import { Trophy, Award, Star, FileText, ExternalLink, Paperclip } from 'lucide-react'
 
 const achievements = [
   {
     icon: Trophy,
-    title: 'Best Paper at IEEE CCPIS',
-    description: 'Recognized for outstanding research contribution',
-    color: 'yellow'
-  },
-  {
-    icon: Star,
-    title: '4-Star Python HackerRank',
-    description: 'Top-tier problem solving skills',
-    color: 'cyan'
+    title: 'Best Paper at IEEE CCPIS 2025',
+    description: 'Best Paper Award — Intelligent Systems & Applications (ISA) Track, CCPIS IEEE Conference 2025',
+    color: 'yellow',
+    attachment: {
+      label: 'View Certificate',
+      href: '/attachments/CCPIS IEEE.pdf'
+    }
   },
   {
     icon: FileText,
-    title: 'LOR from Brudite',
-    description: 'Letter of Recommendation for exceptional work',
-    color: 'violet'
+    title: 'Letter of Recommendation — Brudite',
+    description: 'Letter of Recommendation for exceptional work during internship at Brudite Pvt. Ltd.',
+    color: 'violet',
+    attachment: {
+      label: 'View LOR',
+      href: '/attachments/Brudite LOR.pdf'
+    }
+  },
+  {
+    icon: Trophy,
+    title: 'Winner — HackCrux 2025',
+    description: 'First place at HackCrux 2025 organized by GDG LNMIIT for the AI-Powered Digital Twin project',
+    color: 'yellow',
+    attachment: {
+      label: 'View Certificate',
+      href: '/attachments/HackCrux.jpg'
+    }
   }
 ]
 
@@ -28,27 +40,27 @@ const certifications = [
   {
     title: 'Supervised Machine Learning',
     issuer: 'Stanford University',
-    link: '#'
+    link: '/attachments/Stanford ML.pdf'
   },
   {
     title: 'Python Basics',
     issuer: 'HackerRank',
-    link: '#'
+    link: '/attachments/HackerRank Python.pdf'
   },
   {
     title: 'Introduction to AI',
     issuer: 'IBM',
-    link: '#'
+    link: '/attachments/IBM AI.pdf'
   },
   {
     title: 'Data Analysis',
     issuer: 'Accenture',
-    link: '#'
+    link: '/attachments/Accenture Data Visual.pdf'
   },
   {
     title: 'Generative AI',
     issuer: 'Google Cloud',
-    link: '#'
+    link: '/attachments/Google Cloud Gen AI.pdf'
   }
 ]
 
@@ -56,6 +68,12 @@ const colorClasses = {
   yellow: 'from-yellow-500/20 to-yellow-500/5 text-yellow-500',
   cyan: 'from-cyan/20 to-cyan/5 text-cyan',
   violet: 'from-violet/20 to-violet/5 text-violet'
+}
+
+const attachmentColorClasses = {
+  yellow: 'text-yellow-500 border-yellow-500/30 hover:bg-yellow-500/10',
+  cyan: 'text-cyan border-cyan/30 hover:bg-cyan/10',
+  violet: 'text-violet border-violet/30 hover:bg-violet/10'
 }
 
 export function Achievements() {
@@ -91,11 +109,12 @@ export function Achievements() {
               {achievements.map((achievement, index) => {
                 const Icon = achievement.icon
                 const colors = colorClasses[achievement.color as keyof typeof colorClasses]
+                const attachmentColors = attachmentColorClasses[achievement.color as keyof typeof attachmentColorClasses]
 
                 return (
                   <motion.div
                     key={achievement.title}
-                    className="glass-card rounded-xl p-5 group hover:border-cyan/30 transition-all"
+                    className="glass-card rounded-xl p-4 group hover:border-cyan/30 transition-all"
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -106,9 +125,22 @@ export function Achievements() {
                       <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${colors} flex items-center justify-center flex-shrink-0`}>
                         <Icon className="w-6 h-6" />
                       </div>
-                      <div>
+                      <div className="flex-grow min-w-0">
                         <h4 className="font-bold mb-1">{achievement.title}</h4>
                         <p className="text-sm text-muted-foreground">{achievement.description}</p>
+                        {achievement.attachment && (
+                          <a
+                            href={achievement.attachment.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={`inline-flex items-center gap-1 text-xs font-medium px-3 py-1.5 rounded-full border transition-colors ${attachmentColors}`}
+                            onClick={(e) => e.stopPropagation()}
+                          >
+                            <Paperclip className="w-4 h-4" />
+                            {achievement.attachment.label}
+                            <ExternalLink className="w-4 h-4" />
+                          </a>
+                        )}
                       </div>
                     </div>
                   </motion.div>
