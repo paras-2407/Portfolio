@@ -57,8 +57,8 @@ export function Contact() {
   ]
 
   const socialLinks = [
-    { icon: Linkedin, href: 'https://linkedin.com/in/paras-goyal', label: 'LinkedIn' },
-    { icon: Github, href: 'https://github.com/paras-goyal', label: 'GitHub' }
+    { icon: Linkedin, href: 'https://www.linkedin.com/in/paras-goyal-a19249264/', label: 'LinkedIn' },
+    { icon: Github, href: 'https://github.com/paras-2407', label: 'GitHub' }
   ]
 
   return (
