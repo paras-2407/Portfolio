@@ -173,6 +173,14 @@ export function Hero() {
             >
               Contact Me
             </Button>
+            <Button
+              size="lg"
+              variant="outline"
+              className="border-violet/50 hover:bg-violet/10 hover:border-violet font-semibold px-8"
+              onClick={() => window.open(process.env.NEXT_PUBLIC_RESUME_URL, '_blank')}
+            >
+              View Resume
+            </Button>
           </motion.div>
 
           {/* Social Links */}
