@@ -1,71 +1,48 @@
 import { NextRequest, NextResponse } from 'next/server'
 
-interface ContactRequest {
-  name: string
-  email: string
-  message: string
-}
-
-export async function POST(request: NextRequest) {
+export async function POST(req: NextRequest) {
   try {
-    const body: ContactRequest = await request.json()
-    
+    const { name, email, message } = await req.json()
+
     // Validate required fields
-    if (!body.name || !body.email || !body.message) {
-      return NextResponse.json(
-        { error: 'All fields are required' },
-        { status: 400 }
-      )
+    if (!name || !email || !message) {
+      return NextResponse.json({ error: 'All fields are required.' }, { status: 400 })
     }
 
     // Validate email format
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
-    if (!emailRegex.test(body.email)) {
-      return NextResponse.json(
-        { error: 'Invalid email format' },
-        { status: 400 }
-      )
+    if (!emailRegex.test(email)) {
+      return NextResponse.json({ error: 'Invalid email format.' }, { status: 400 })
     }
 
-    // In production, you would:
-    // 1. Send an email notification using a service like Resend, SendGrid, etc.
-    // 2. Store the message in a database
-    // 3. Send a confirmation email to the sender
-    
-    // Example with Resend (uncomment and add RESEND_API_KEY env variable):
-    // const resend = new Resend(process.env.RESEND_API_KEY)
-    // await resend.emails.send({
-    //   from: 'portfolio@yourdomain.com',
-    //   to: 'goyal.paras004@gmail.com',
-    //   subject: `New Contact Form Submission from ${body.name}`,
-    //   html: `
-    //     <h2>New Contact Form Submission</h2>
-    //     <p><strong>Name:</strong> ${body.name}</p>
-    //     <p><strong>Email:</strong> ${body.email}</p>
-    //     <p><strong>Message:</strong></p>
-    //     <p>${body.message}</p>
-    //   `
-    // })
+    // ── Log to Google Sheet ──────────────────────────────────────────────────
+    const webhookUrl = process.env.GOOGLE_SHEET_WEBHOOK_URL
+    console.log('Webhook URL:', webhookUrl) // temporary debug — remove after confirming it works
 
-    console.log('Contact form submission:', {
-      name: body.name,
-      email: body.email,
-      message: body.message,
-      timestamp: new Date().toISOString()
+    if (!webhookUrl) {
+      console.error('GOOGLE_SHEET_WEBHOOK_URL is not set in .env.local')
+      return NextResponse.json({ error: 'Server misconfiguration.' }, { status: 500 })
+    }
+
+    const sheetRes = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ name, email, message }),
     })
 
+    if (!sheetRes.ok) {
+      const errText = await sheetRes.text()
+      console.error('Google Sheet webhook error:', errText)
+      return NextResponse.json({ error: 'Failed to log to sheet.' }, { status: 500 })
+    }
+
     return NextResponse.json(
-      { 
-        success: true, 
-        message: 'Thank you for your message! I will get back to you soon.' 
-      },
+      { success: true, message: 'Thank you! I will get back to you soon.' },
       { status: 200 }
     )
+
   } catch (error) {
-    console.error('Contact form error:', error)
-    return NextResponse.json(
-      { error: 'Failed to process your request' },
-      { status: 500 }
-    )
+    console.error('Contact API error:', error)
+    return NextResponse.json({ error: 'Internal server error.' }, { status: 500 })
   }
 }
