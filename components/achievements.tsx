@@ -11,7 +11,7 @@ const achievements = [
     color: 'yellow',
     attachment: {
       label: 'View Certificate',
-      href: '/attachments/CCPIS IEEE.pdf'
+      href: process.env.NEXT_PUBLIC_CCPIS_URL
     }
   },
   {
@@ -21,7 +21,7 @@ const achievements = [
     color: 'violet',
     attachment: {
       label: 'View LOR',
-      href: '/attachments/Brudite LOR.pdf'
+      href: process.env.NEXT_PUBLIC_LOR_URL
     }
   },
   {
@@ -31,7 +31,7 @@ const achievements = [
     color: 'yellow',
     attachment: {
       label: 'View Certificate',
-      href: '/attachments/HackCrux.jpg'
+      href: process.env.NEXT_PUBLIC_HACKATHON_URL
     }
   }
 ]
@@ -40,27 +40,27 @@ const certifications = [
   {
     title: 'Supervised Machine Learning',
     issuer: 'Stanford University',
-    link: '/attachments/Stanford ML.pdf'
+    link: process.env.NEXT_PUBLIC_ML_URL
   },
   {
     title: 'Python Basics',
     issuer: 'HackerRank',
-    link: '/attachments/HackerRank Python.pdf'
+    link: process.env.NEXT_PUBLIC_PYTHON_URL
   },
   {
     title: 'Introduction to AI',
     issuer: 'IBM',
-    link: '/attachments/IBM AI.pdf'
+    link: process.env.NEXT_PUBLIC_AI_URL
   },
   {
     title: 'Data Analysis',
     issuer: 'Accenture',
-    link: '/attachments/Accenture Data Visual.pdf'
+    link: process.env.NEXT_PUBLIC_DATA_URL
   },
   {
     title: 'Generative AI',
     issuer: 'Google Cloud',
-    link: '/attachments/Google Cloud Gen AI.pdf'
+    link: process.env.NEXT_PUBLIC_GENAI_URL
   }
 ]
 
