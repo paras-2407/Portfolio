@@ -32,7 +32,6 @@ const projects: Project[] = [
       'User preference adaptation over time',
       'Privacy-focused local processing'
     ],
-    github: 'https://github.com/paras-goyal/digital-twin',
     award: 'Winner, HackCrux 2025, GDG LNMIIT'
   },
   {
@@ -49,7 +48,6 @@ const projects: Project[] = [
       'Full-capacity handling: web app displays "No Slots Available" and restricts gate entry to prevent overloading',
       'Flask server APIs bridging IoT hardware (Raspberry Pi, NodeMCU) with the SQL database and React frontend'
     ],
-    github: 'https://github.com/paras-goyal/smart-parking',
     award: 'Best Paper Award, CCPIS IEEE Conference 2025 — Intelligent Systems & Applications (ISA) Track'
   },
   {
