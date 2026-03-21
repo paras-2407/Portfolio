@@ -1,7 +1,7 @@
 "use client"
 
 import { motion } from 'framer-motion'
-import { Code, Cpu, Database, Cloud, Wrench } from 'lucide-react'
+import { Code, Cpu, Database, Cloud, Wrench, Shield } from 'lucide-react'
 
 const skillCategories = [
   {
@@ -13,7 +13,7 @@ const skillCategories = [
   {
     title: 'Frameworks & AI',
     icon: Cpu,
-    skills: ['Django', 'TensorFlow', 'ReactJS', 'Ollama', 'RAG', 'Gemini'],
+    skills: ['Django', 'TensorFlow', 'ReactJS', 'Ollama', 'RAG', 'Gemini', 'AI Agents'],
     color: 'violet'
   },
   {
@@ -25,14 +25,20 @@ const skillCategories = [
   {
     title: 'Cloud & DevOps',
     icon: Cloud,
-    skills: ['AWS', 'Docker', 'Kubernetes', 'Vertex AI', 'Prometheus', 'Grafana', 'SonarQube'],
+    skills: ['Azure Web Services', 'Google Cloud Platform', 'Docker', 'Kubernetes', 'Vertex AI', 'Prometheus', 'Grafana'],
     color: 'cyan'
   },
   {
     title: 'Tools',
     icon: Wrench,
-    skills: ['Git', 'Postman', 'JIRA', 'WebSockets'],
+    skills: ['Git', 'Postman', 'JIRA', 'Confluence', 'GitHub Actions'],
     color: 'violet'
+  },
+  {
+    title: 'Code Security',
+    icon: Shield,
+    skills: ['Unit Testing', 'Staticcheck', 'Vulnerability Scan', 'SonarQube', 'Snyk', 'Gosec', 'pytest'],
+    color: 'indigo'
   }
 ]
 
